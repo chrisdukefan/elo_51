@@ -1,0 +1,68 @@
+﻿Merge branch 'master' of https://github.com/chrisdukefan/elo_51
+
+Conflicts:
+	.ipynb_checkpoints/elo_optim-checkpoint.ipynb
+	elo_optim.ipynb
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 25 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	new file:   #trueskill.ipynb#
+#	modified:   .DS_Store
+#	modified:   .ipynb_checkpoints/Elo-checkpoint.ipynb
+#	modified:   .ipynb_checkpoints/elo_optim-checkpoint.ipynb
+#	new file:   .ipynb_checkpoints/elo_spread-checkpoint.ipynb
+#	new file:   .ipynb_checkpoints/leaderboard0-checkpoint.ipynb
+#	new file:   .ipynb_checkpoints/test3-checkpoint.ipynb
+#	new file:   .ipynb_checkpoints/test3-checkpoint.py
+#	new file:   .ipynb_checkpoints/test4-checkpoint.ipynb
+#	modified:   Elo.ipynb
+#	new file:   __pycache__/elo_optim1.cpython-34.pyc
+#	new file:   __pycache__/test0.cpython-34.pyc
+#	new file:   __pycache__/test3.cpython-34.pyc
+#	new file:   elo.py
+#	modified:   elo_optim.ipynb
+#	new file:   elo_optim1.py
+#	new file:   elo_spread.ipynb
+#	new file:   games2000.csv
+#	new file:   games2001.csv
+#	new file:   games2002.csv
+#	new file:   games2003.csv
+#	new file:   games2004.csv
+#	new file:   games2005.csv
+#	new file:   games2006.csv
+#	new file:   games2007.csv
+#	new file:   games2008.csv
+#	new file:   games2009.csv
+#	modified:   games2010.csv
+#	modified:   games2015.csv
+#	new file:   leaderboard0.ipynb
+#	new file:   nba04.csv
+#	new file:   nba05.csv
+#	new file:   nba06.csv
+#	new file:   nba07.csv
+#	new file:   nba08.csv
+#	new file:   nba09.csv
+#	new file:   nba14.csv
+#	new file:   test0.py
+#	new file:   test0.pyc
+#	new file:   test1.py
+#	new file:   test3.ipynb
+#	new file:   test3.py
+#	new file:   test4.ipynb
+#	new file:   trueskill.py
+#
+

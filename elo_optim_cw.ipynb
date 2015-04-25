@@ -1,0 +1,313 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "collapsed": false,
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "ename": "SyntaxError",
+     "evalue": "invalid syntax (<ipython-input-1-f0400c8e9fab>, line 49)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;36m  File \u001b[1;32m\"<ipython-input-1-f0400c8e9fab>\"\u001b[1;36m, line \u001b[1;32m49\u001b[0m\n\u001b[1;33m    print sorted(hp_test.items(), key=operator.itemgetter(1),reverse=True)\u001b[0m\n\u001b[1;37m               ^\u001b[0m\n\u001b[1;31mSyntaxError\u001b[0m\u001b[1;31m:\u001b[0m invalid syntax\n"
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[((4, 400, 5, 0), 0.6853658536585366), ((4, 700, 5, -5), 0.6853658536585366), ((4, 400, 5, -3), 0.6853658536585366), ((4, 700, 5, 0), 0.6853658536585366), ((4, 400, 5, -1), 0.6853658536585366), ((4, 400, 5, -5), 0.6853658536585366), ((4, 700, 5, -3), 0.6853658536585366), ((4, 700, 5, -1), 0.6853658536585366), ((3, 700, 5, -5), 0.683739837398374), ((3, 700, 5, -1), 0.683739837398374), ((3, 400, 5, -1), 0.683739837398374), ((3, 400, 5, 0), 0.683739837398374), ((3, 700, 5, 0), 0.683739837398374), ((3, 700, 5, -3), 0.683739837398374), ((3, 400, 5, -3), 0.683739837398374), ((3, 400, 5, -5), 0.683739837398374), ((3, 400, 6, -5), 0.6829268292682927), ((3, 400, 6, 0), 0.6829268292682927), ((3, 400, 6, -1), 0.6829268292682927), ((3, 400, 6, -3), 0.6829268292682927), ((3, 700, 6, -1), 0.6829268292682927), ((3, 700, 6, -5), 0.6829268292682927), ((3, 700, 6, 0), 0.6829268292682927), ((3, 700, 6, -3), 0.6829268292682927), ((3, 700, 7, -5), 0.6821138211382114), ((3, 400, 7, 0), 0.6821138211382114), ((3, 700, 7, -1), 0.6821138211382114), ((3, 700, 7, -3), 0.6821138211382114), ((3, 700, 7, 0), 0.6821138211382114), ((3, 400, 7, -1), 0.6821138211382114), ((3, 400, 7, -3), 0.6821138211382114), ((3, 400, 7, -5), 0.6821138211382114), ((4, 400, 7, 0), 0.6813008130081301), ((4, 700, 7, -1), 0.6813008130081301), ((4, 700, 7, -3), 0.6813008130081301), ((4, 400, 7, -3), 0.6813008130081301), ((4, 400, 7, -1), 0.6813008130081301), ((4, 400, 7, -5), 0.6813008130081301), ((4, 700, 7, 0), 0.6813008130081301), ((4, 700, 7, -5), 0.6813008130081301), ((5, 400, 6, -1), 0.6804878048780488), ((5, 400, 6, -5), 0.6804878048780488), ((4, 700, 6, -5), 0.6804878048780488), ((5, 400, 5, -1), 0.6804878048780488), ((4, 400, 6, 0), 0.6804878048780488), ((5, 700, 6, -3), 0.6804878048780488), ((5, 700, 6, -1), 0.6804878048780488), ((5, 700, 5, -5), 0.6804878048780488), ((4, 400, 6, -5), 0.6804878048780488), ((4, 400, 6, -1), 0.6804878048780488), ((4, 400, 6, -3), 0.6804878048780488), ((5, 700, 5, -1), 0.6804878048780488), ((4, 700, 6, -1), 0.6804878048780488), ((5, 700, 5, 0), 0.6804878048780488), ((4, 700, 6, -3), 0.6804878048780488), ((5, 700, 6, 0), 0.6804878048780488), ((5, 400, 5, -3), 0.6804878048780488), ((5, 700, 6, -5), 0.6804878048780488), ((5, 400, 5, -5), 0.6804878048780488), ((5, 400, 5, 0), 0.6804878048780488), ((4, 700, 6, 0), 0.6804878048780488), ((5, 400, 6, 0), 0.6804878048780488), ((5, 700, 5, -3), 0.6804878048780488), ((5, 400, 6, -3), 0.6804878048780488), ((5, 700, 7, -3), 0.6788617886178862), ((5, 400, 7, -3), 0.6788617886178862), ((5, 400, 7, -5), 0.6788617886178862), ((5, 700, 7, -5), 0.6788617886178862), ((5, 400, 7, -1), 0.6788617886178862), ((5, 700, 7, 0), 0.6788617886178862), ((5, 400, 7, 0), 0.6788617886178862), ((5, 700, 7, -1), 0.6788617886178862)]\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas  # used for importing the .csv files\n",
+    "import operator\n",
+    "import numpy as np # used for natural logs\n",
+    "import datetime # used for dates\n",
+    "hp_test = {} # set up a dictionary to hold the results of our optimization\n",
+    "for hp1 in (3,4,5): # range to iterate over for the first hyperparameter, the scale 'k'\n",
+    "    for hp2 in (400,700): # range for the spread hyperparameter\n",
+    "        for hp3 in (5,6,7): # range for the effect homecourt advantage\n",
+    "            for hp4 in (0,-1,-3,-5): # range for the effect of playing in a back to back\n",
+    "                data = pandas.read_csv('games2015.csv') # read in csv\n",
+    "                ID = {} # set up a dictionary that will be the place of storage for teams and their ratings\n",
+    "                outcomes = [] # set up an array that will contain whether we correctly predictd the game or not\n",
+    "                for idx, row in data.iterrows(): # for each game....\n",
+    "                    if data.loc[idx,'PTS']>data.loc[idx,'PTS.1']: # check who won the game, this is the case where the away team won\n",
+    "                        winner = data.loc[idx,'Visitor/Neutral']; loser = data.loc[idx,'Home/Neutral']; # get the names of the winner and loser\n",
+    "                        pd = data.loc[idx,'PTS'] - data.loc[idx,'PTS.1']; hm_i = 0 #get the point differential and signal whether home team won\n",
+    "                    else: # do the same in the case where the home team won\n",
+    "                        winner = data.loc[idx,'Home/Neutral']; loser = data.loc[idx,'Visitor/Neutral'];\n",
+    "                        pd = data.loc[idx,'PTS.1'] - data.loc[idx,'PTS'];hm_i = 1\n",
+    "                    game_date = datetime.datetime.strptime(data.loc[idx][\"Date\"],\"%a, %b %d, %Y\") # get the date of the game\n",
+    "                    if winner in ID.keys(): # if the team has already played a game\n",
+    "                        w_elo = ID[winner][0] # get their ranking\n",
+    "                        if (ID[winner][1] - game_date).days == 1: w_date = 1 # check whether they are playing in a back-to-back game\n",
+    "                        else: w_date = 0 \n",
+    "                        w_games = ID[winner][2] # see how many previous games they've played\n",
+    "                    else: # else initialize a new team\n",
+    "                        w_elo = 1500\n",
+    "                        w_date = 0\n",
+    "                        w_games = 0\n",
+    "                    if loser in ID.keys(): #do the same for the losing team\n",
+    "                        l_elo = ID[loser][0]\n",
+    "                        if (ID[loser][1] - game_date).days == 1: l_date = 1\n",
+    "                        else: l_date = 0\n",
+    "                        l_games = ID[loser][2]\n",
+    "                    else: \n",
+    "                        l_elo = 1500\n",
+    "                        l_date = 0\n",
+    "                        l_games = 0\n",
+    "                    if hm_i == 1: w_elo_g = w_elo+hp3 + hp4*w_date; l_elo_g = l_elo + hp4*l_date # adjust the teams' elo rating for homecourt advantage and back to back\n",
+    "                    else: l_elo_g = l_elo +hp3 + hp4*l_date; w_elo_g = w_elo + hp4*l_date;\n",
+    "                    if w_elo_g>l_elo_g: outcomes.append(1) # if the model correctly predicted the game, add a one to the outcome vector\n",
+    "                    if l_elo_g>w_elo_g: outcomes.append(0) # else add a zero\n",
+    "                    w_new_elo = (w_elo+np.log(pd+1)*(2.2/((w_elo-l_elo)*.001+2.2))*hp1*(1-(1/(1+10**((l_elo_g-w_elo_g)/400))))) # update the winner's elo\n",
+    "                    l_new_elo = (l_elo+np.log(pd+1)*(2.2/((w_elo-l_elo)*.001+2.2))*hp1*(0-(1/(1+10**((w_elo_g-l_elo_g)/400))))) # update the loser's elo\n",
+    "                    ID[winner]=(w_new_elo,game_date,w_games + 1) # update the dictionary of teams to include a key of the team's name, and a value of (their elo score, the date of their last game, how many games they've played so far)\n",
+    "                    ID[loser]=(l_new_elo,game_date,l_games + 1) # do the same for the losing team\n",
+    "                hp_test[(hp1,hp2,hp3,hp4)] = (sum(outcomes)/float(len(outcomes))) # update the dictionary of results to include a key of all their hyperparameters and a value of the percent of games correctly predicted\n",
+    "print (sorted(hp_test.items(), key=operator.itemgetter(1),reverse=True)) # print out the dictionary in order form most accurate to least accurate"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[('Minnesota Timberwolves', (1326.1115341152424, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('New York Knicks', (1328.8343536714096, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Philadelphia 76ers', (1349.3602287170336, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Los Angeles Lakers', (1353.7878010762252, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Orlando Magic', (1381.2297513034696, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Sacramento Kings', (1417.5215234753346, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Charlotte Hornets', (1434.5934649237408, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Denver Nuggets', (1435.9160448284144, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Detroit Pistons', (1461.3417194546239, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Miami Heat', (1470.5613155297028, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Brooklyn Nets', (1476.0040747436931, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Phoenix Suns', (1480.2408812390504, datetime.datetime(2015, 4, 14, 0, 0), 82)), ('Milwaukee Bucks', (1493.7194882164245, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Indiana Pacers', (1503.978165746893, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Washington Wizards', (1507.5772600102155, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Boston Celtics', (1512.189488140566, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Utah Jazz', (1524.0178534923925, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('New Orleans Pelicans', (1524.7052005431176, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Toronto Raptors', (1533.9692720197411, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Dallas Mavericks', (1546.4438486893594, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Portland Trail Blazers', (1550.1718203354665, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Chicago Bulls', (1551.1686229590684, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Oklahoma City Thunder', (1551.5236368722406, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Memphis Grizzlies', (1569.0087425296213, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Cleveland Cavaliers', (1589.2633653624753, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Houston Rockets', (1593.3833493197544, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Atlanta Hawks', (1598.8808260865778, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Los Angeles Clippers', (1621.1892257183449, datetime.datetime(2015, 4, 14, 0, 0), 82)), ('San Antonio Spurs', (1631.5832527739003, datetime.datetime(2015, 4, 15, 0, 0), 82)), ('Golden State Warriors', (1681.7238881059006, datetime.datetime(2015, 4, 15, 0, 0), 82))]\n"
+     ]
+    }
+   ],
+   "source": [
+    "print (sorted(ID.items(), key=operator.itemgetter(1)))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 73,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.1\n"
+     ]
+    }
+   ],
+   "source": [
+    "import datetime\n",
+    "import re\n",
+    "print -.1*((datetime.datetime.strptime(data.loc[1][\"Date\"],\"%a, %b %d, %Y\"))-(datetime.datetime.strptime(data.loc[6][\"Date\"],\"%a, %b %d, %Y\"))).days"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "7"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "3+4"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "      Unnamed: 0               Date Unnamed: 2         Visitor/Neutral  PTS  \\\n",
+      "0              1  Tue, Oct 28, 2014  Box Score         Houston Rockets  108   \n",
+      "1              2  Tue, Oct 28, 2014  Box Score           Orlando Magic   84   \n",
+      "2              3  Tue, Oct 28, 2014  Box Score        Dallas Mavericks  100   \n",
+      "3              4  Wed, Oct 29, 2014  Box Score           Brooklyn Nets  105   \n",
+      "4              5  Wed, Oct 29, 2014  Box Score         Milwaukee Bucks  106   \n",
+      "5              6  Wed, Oct 29, 2014  Box Score         Detroit Pistons   79   \n",
+      "6              7  Wed, Oct 29, 2014  Box Score      Philadelphia 76ers   91   \n",
+      "7              8  Wed, Oct 29, 2014  Box Score  Minnesota Timberwolves  101   \n",
+      "8              9  Wed, Oct 29, 2014  Box Score      Washington Wizards   95   \n",
+      "9             10  Wed, Oct 29, 2014  Box Score           Chicago Bulls  104   \n",
+      "10            11  Wed, Oct 29, 2014  Box Score      Los Angeles Lakers   99   \n",
+      "11            12  Wed, Oct 29, 2014  Box Score   Oklahoma City Thunder   89   \n",
+      "12            13  Wed, Oct 29, 2014  Box Score   Golden State Warriors   95   \n",
+      "13            14  Wed, Oct 29, 2014  Box Score           Atlanta Hawks  102   \n",
+      "14            15  Wed, Oct 29, 2014  Box Score         Houston Rockets  104   \n",
+      "15            16  Thu, Oct 30, 2014  Box Score         New York Knicks   95   \n",
+      "16            17  Thu, Oct 30, 2014  Box Score               Utah Jazz  102   \n",
+      "17            18  Thu, Oct 30, 2014  Box Score   Oklahoma City Thunder   90   \n",
+      "18            19  Thu, Oct 30, 2014  Box Score         Detroit Pistons   91   \n",
+      "19            20  Thu, Oct 30, 2014  Box Score      Washington Wizards  105   \n",
+      "20            21  Fri, Oct 31, 2014  Box Score     Cleveland Cavaliers  114   \n",
+      "21            22  Fri, Oct 31, 2014  Box Score       Memphis Grizzlies   97   \n",
+      "22            23  Fri, Oct 31, 2014  Box Score    Los Angeles Clippers  118   \n",
+      "23            24  Fri, Oct 31, 2014  Box Score      Philadelphia 76ers   81   \n",
+      "24            25  Fri, Oct 31, 2014  Box Score       San Antonio Spurs   89   \n",
+      "25            26  Fri, Oct 31, 2014  Box Score  Portland Trail Blazers   94   \n",
+      "26            27   Sat, Nov 1, 2014  Box Score          Indiana Pacers   92   \n",
+      "27            28   Sat, Nov 1, 2014  Box Score       Memphis Grizzlies   71   \n",
+      "28            29   Sat, Nov 1, 2014  Box Score           Brooklyn Nets  102   \n",
+      "29            30   Sat, Nov 1, 2014  Box Score      Los Angeles Lakers  104   \n",
+      "...          ...                ...        ...                     ...  ...   \n",
+      "1200        1201  Sun, Apr 12, 2015  Box Score           Atlanta Hawks   99   \n",
+      "1201        1202  Mon, Apr 13, 2015  Box Score         New York Knicks  112   \n",
+      "1202        1203  Mon, Apr 13, 2015  Box Score           Chicago Bulls  113   \n",
+      "1203        1204  Mon, Apr 13, 2015  Box Score         Houston Rockets  100   \n",
+      "1204        1205  Mon, Apr 13, 2015  Box Score         Detroit Pistons   97   \n",
+      "1205        1206  Mon, Apr 13, 2015  Box Score       Memphis Grizzlies  107   \n",
+      "1206        1207  Mon, Apr 13, 2015  Box Score          Denver Nuggets  103   \n",
+      "1207        1208  Mon, Apr 13, 2015  Box Score           Orlando Magic   93   \n",
+      "1208        1209  Mon, Apr 13, 2015  Box Score    New Orleans Pelicans  100   \n",
+      "1209        1210  Mon, Apr 13, 2015  Box Score  Portland Trail Blazers   90   \n",
+      "1210        1211  Mon, Apr 13, 2015  Box Score         Milwaukee Bucks  107   \n",
+      "1211        1212  Mon, Apr 13, 2015  Box Score      Los Angeles Lakers   92   \n",
+      "1212        1213  Mon, Apr 13, 2015  Box Score        Dallas Mavericks   92   \n",
+      "1213        1214  Tue, Apr 14, 2015  Box Score         Toronto Raptors   93   \n",
+      "1214        1215  Tue, Apr 14, 2015  Box Score      Washington Wizards   95   \n",
+      "1215        1216  Tue, Apr 14, 2015  Box Score    Los Angeles Clippers  112   \n",
+      "1216        1217  Wed, Apr 15, 2015  Box Score           Orlando Magic   88   \n",
+      "1217        1218  Wed, Apr 15, 2015  Box Score           Atlanta Hawks   85   \n",
+      "1218        1219  Wed, Apr 15, 2015  Box Score      Washington Wizards  108   \n",
+      "1219        1220  Wed, Apr 15, 2015  Box Score  Portland Trail Blazers   98   \n",
+      "1220        1221  Wed, Apr 15, 2015  Box Score          Denver Nuggets  126   \n",
+      "1221        1222  Wed, Apr 15, 2015  Box Score               Utah Jazz   91   \n",
+      "1222        1223  Wed, Apr 15, 2015  Box Score        Sacramento Kings  122   \n",
+      "1223        1224  Wed, Apr 15, 2015  Box Score          Indiana Pacers   83   \n",
+      "1224        1225  Wed, Apr 15, 2015  Box Score          Boston Celtics  105   \n",
+      "1225        1226  Wed, Apr 15, 2015  Box Score   Oklahoma City Thunder  138   \n",
+      "1226        1227  Wed, Apr 15, 2015  Box Score       San Antonio Spurs  103   \n",
+      "1227        1228  Wed, Apr 15, 2015  Box Score         Detroit Pistons  112   \n",
+      "1228        1229  Wed, Apr 15, 2015  Box Score              Miami Heat  105   \n",
+      "1229        1230  Wed, Apr 15, 2015  Box Score       Charlotte Hornets   87   \n",
+      "\n",
+      "                Home/Neutral  PTS.1 Unnamed: 7 Notes  \n",
+      "0         Los Angeles Lakers     90        NaN   NaN  \n",
+      "1       New Orleans Pelicans    101        NaN   NaN  \n",
+      "2          San Antonio Spurs    101        NaN   NaN  \n",
+      "3             Boston Celtics    121        NaN   NaN  \n",
+      "4          Charlotte Hornets    108         OT   NaN  \n",
+      "5             Denver Nuggets     89        NaN   NaN  \n",
+      "6             Indiana Pacers    103        NaN   NaN  \n",
+      "7          Memphis Grizzlies    105        NaN   NaN  \n",
+      "8                 Miami Heat    107        NaN   NaN  \n",
+      "9            New York Knicks     80        NaN   NaN  \n",
+      "10              Phoenix Suns    119        NaN   NaN  \n",
+      "11    Portland Trail Blazers    106        NaN   NaN  \n",
+      "12          Sacramento Kings     77        NaN   NaN  \n",
+      "13           Toronto Raptors    109        NaN   NaN  \n",
+      "14                 Utah Jazz     93        NaN   NaN  \n",
+      "15       Cleveland Cavaliers     90        NaN   NaN  \n",
+      "16          Dallas Mavericks    120        NaN   NaN  \n",
+      "17      Los Angeles Clippers     93        NaN   NaN  \n",
+      "18    Minnesota Timberwolves     97        NaN   NaN  \n",
+      "19             Orlando Magic     98        NaN   NaN  \n",
+      "20             Chicago Bulls    108         OT   NaN  \n",
+      "21            Indiana Pacers     89        NaN   NaN  \n",
+      "22        Los Angeles Lakers    111        NaN   NaN  \n",
+      "23           Milwaukee Bucks     93        NaN   NaN  \n",
+      "24              Phoenix Suns     94        NaN   NaN  \n",
+      "25          Sacramento Kings    103        NaN   NaN  \n",
+      "26             Atlanta Hawks    102        NaN   NaN  \n",
+      "27         Charlotte Hornets     69        NaN   NaN  \n",
+      "28           Detroit Pistons     90        NaN   NaN  \n",
+      "29     Golden State Warriors    127        NaN   NaN  \n",
+      "...                      ...    ...        ...   ...  \n",
+      "1200      Washington Wizards    108        NaN   NaN  \n",
+      "1201           Atlanta Hawks    108        NaN   NaN  \n",
+      "1202           Brooklyn Nets     86        NaN   NaN  \n",
+      "1203       Charlotte Hornets     90        NaN   NaN  \n",
+      "1204     Cleveland Cavaliers    109        NaN   NaN  \n",
+      "1205   Golden State Warriors    111        NaN   NaN  \n",
+      "1206    Los Angeles Clippers    110        NaN   NaN  \n",
+      "1207              Miami Heat    100        NaN   NaN  \n",
+      "1208  Minnesota Timberwolves     88        NaN   NaN  \n",
+      "1209   Oklahoma City Thunder    101        NaN   NaN  \n",
+      "1210      Philadelphia 76ers     97        NaN   NaN  \n",
+      "1211        Sacramento Kings    102        NaN   NaN  \n",
+      "1212               Utah Jazz    109        NaN   NaN  \n",
+      "1213          Boston Celtics     95        NaN   NaN  \n",
+      "1214          Indiana Pacers     99        2OT   NaN  \n",
+      "1215            Phoenix Suns    101        NaN   NaN  \n",
+      "1216           Brooklyn Nets    101        NaN   NaN  \n",
+      "1217           Chicago Bulls     91        NaN   NaN  \n",
+      "1218     Cleveland Cavaliers    113         OT   NaN  \n",
+      "1219        Dallas Mavericks    114        NaN   NaN  \n",
+      "1220   Golden State Warriors    133        NaN   NaN  \n",
+      "1221         Houston Rockets    117        NaN   NaN  \n",
+      "1222      Los Angeles Lakers     99        NaN   NaN  \n",
+      "1223       Memphis Grizzlies     95        NaN   NaN  \n",
+      "1224         Milwaukee Bucks    100        NaN   NaN  \n",
+      "1225  Minnesota Timberwolves    113        NaN   NaN  \n",
+      "1226    New Orleans Pelicans    108        NaN   NaN  \n",
+      "1227         New York Knicks     90        NaN   NaN  \n",
+      "1228      Philadelphia 76ers    101        NaN   NaN  \n",
+      "1229         Toronto Raptors     92        NaN   NaN  \n",
+      "\n",
+      "[1230 rows x 9 columns]\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(pandas.read_csv('games20.csv'))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.4.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 0
+}
